@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    
+
     <modelVersion>4.0.0</modelVersion>
     <groupId>ua.sergiishapoval.webcarrental</groupId>
     <artifactId>WebCarRental</artifactId>
@@ -16,6 +16,50 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <apache.tiles>3.0.5</apache.tiles>
     </properties>
+
+    <!-- ------------------------------------------------------------
+         Nexus Repositories for dependency resolution
+         ------------------------------------------------------------ -->
+    <repositories>
+        <repository>
+            <id>nexus-releases</id>
+            <name>Nexus Release Repository</name>
+            <url>http://107.23.250.183:8081/repository/maven-releases/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+
+        <repository>
+            <id>nexus-snapshots</id>
+            <name>Nexus Snapshot Repository</name>
+            <url>http://107.23.250.183:8081/repository/maven-snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <!-- ------------------------------------------------------------
+         Deployment to Nexus (optional, for mvn deploy)
+         ------------------------------------------------------------ -->
+    <distributionManagement>
+        <repository>
+            <id>nexus-releases</id>
+            <url>http://107.23.250.183:8081/repository/maven-releases/</url>
+        </repository>
+
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <url>http://107.23.250.183:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <dependencies>
         <!-- JUnit for testing -->
@@ -64,7 +108,7 @@
             <version>1.1.2</version>
         </dependency>
 
-        <!-- BeanUtils for form binding -->
+        <!-- BeanUtils -->
         <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
